@@ -11,67 +11,43 @@
 <script>
   function romailatinra(a) {
     romaiSzam = "";
-	if(a<=3){
-		for(i=0; i<a; i++){
-			romaiSzam+="I";
-		}
+	if(a<10){
+		romaiSzam += convert(a);
 	}
-	else if(a==4){
-		romaiSzam="IV";
+	if(a<20 && a>=10){
+		romaiSzam+= "X";
+		romaiSzam += convert(a);
 	}
-	else if(a>4 && a<9){
-		romaiSzam="V";
-		for(i=0; i<a-5; i++){
-			romaiSzam+="I";
-		}
+	if(a<30 && a>=20){
+		romaiSzam+= "XX";
+		romaiSzam += convert(a);
 	}
-	else if(a==9){
-		romaiSzam="IX";
-	}
-	else if(a>9 && a<20){
-		romaiSzam="X";
-		if(a>10 && a<14){
-			for(i=0; i<a-10; i++){
-				romaiSzam+="I";
-			}
-		}
-		else if(a==14){
-			romaiSzam+="IV";
-		}
-		else if(a>14 && a<19){
-			romaiSzam+="V";
-			for(i=0; i<a-15; i++){
-				romaiSzam+="I";
-			}
-		}
-		else if(a==19){
-			romaiSzam+="IX";
-		}
-	}
-	else if(a>19 && a<30){
-		romaiSzam="XX";
-		if(a>20 && a<24){
-			for(i=0; i<a-20; i++){
-				romaiSzam+="I";
-			}
-		}
-		else if(a==24){
-			romaiSzam+="IV";
-		}
-		else if(a>24 && a<29){
-			romaiSzam+="V";
-			for(i=0; i<a-25; i++){
-				romaiSzam+="I";
-			}
-		}
-		else if(a==29){
-			romaiSzam+="IX";
-		}
-	}
-	
 	return romaiSzam;
   }
   
+  function convert (n){
+	const lastDigit2Str = String(n).slice(-1);
+	const ld = Number(lastDigit2Str);
+	romaiSzam = "";
+	if(ld<=3){
+		for(i=0; i<ld; i++){
+			romaiSzam+="I";
+		}
+	}
+	else if(ld==4){
+		romaiSzam+="IV";
+	}
+	else if(ld>4 && ld<9){
+		romaiSzam+="V";
+		for(i=0; i<ld-5; i++){
+			romaiSzam+="I";
+		}
+	}
+	else if(ld==9){
+		romaiSzam+="IX";
+	}
+	return romaiSzam;
+  }
 
   QUnit.module('romaiarabra', function() {
     QUnit.test('egy', function(assert) {
