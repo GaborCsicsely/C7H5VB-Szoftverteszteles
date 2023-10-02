@@ -14,14 +14,23 @@
 	if(a<10){
 		romaiSzam += convert(a);
 	}
-	if(a<20 && a>=10){
+	if(a>=10 && a<20){
 		romaiSzam+= "X";
 		romaiSzam += convert(a);
 	}
-	if(a<30 && a>=20){
+	if(a>=20 && a<30){
 		romaiSzam+= "XX";
 		romaiSzam += convert(a);
 	}
+	if(a>=30 && a<40){
+		romaiSzam+= "XX";
+		romaiSzam += convert(a);
+	}
+	if(a>=40 && a<50){
+		romaiSzam+= "XX";
+		romaiSzam += convert(a);
+	}
+	
 	return romaiSzam;
   }
   
