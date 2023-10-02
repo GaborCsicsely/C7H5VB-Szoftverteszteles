@@ -25,6 +25,9 @@
 			romaiSzam+="I";
 		}
 	}
+	else if(a==9){
+		romaiSzam="IX";
+	}
 	return romaiSzam;
   }
 
@@ -52,6 +55,9 @@
     });
 	QUnit.test('nyolc', function(assert) {
       assert.equal(romaiarabra(8), 'VIII');
+    });
+	QUnit.test('kilenc', function(assert) {
+      assert.equal(romaiarabra(9), 'IX');
     });
 	
   });
