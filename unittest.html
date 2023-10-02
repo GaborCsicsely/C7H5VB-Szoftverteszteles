@@ -19,17 +19,11 @@
 	else if(a==4){
 		romaiSzam="IV";
 	}
-	else if(a==5){
+	else if(a>4 && a<9){
 		romaiSzam="V";
-	}
-	else if(a==6){
-		romaiSzam="VI";
-	}
-	else if(a==7){
-		romaiSzam="VII";
-	}
-	else if(a==8){
-		romaiSzam="VIII";
+		for(i=0; i<a-5; i++){
+			romaiSzam+="I";
+		}
 	}
 	return romaiSzam;
   }
