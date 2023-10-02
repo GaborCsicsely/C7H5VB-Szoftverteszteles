@@ -48,9 +48,30 @@
 			romaiSzam+="IX";
 		}
 	}
+	else if(a>19 && a<30){
+		romaiSzam="XX";
+		if(a>20 && a<24){
+			for(i=0; i<a-20; i++){
+				romaiSzam+="I";
+			}
+		}
+		else if(a==24){
+			romaiSzam+="IV";
+		}
+		else if(a>24 && a<29){
+			romaiSzam+="V";
+			for(i=0; i<a-25; i++){
+				romaiSzam+="I";
+			}
+		}
+		else if(a==29){
+			romaiSzam+="IX";
+		}
+	}
 	
 	return romaiSzam;
   }
+  
 
   QUnit.module('romaiarabra', function() {
     QUnit.test('egy', function(assert) {
@@ -109,6 +130,24 @@
     });
 	QUnit.test('tizenkilenc', function(assert) {
       assert.equal(romailatinra(19), 'XIX');
+    });
+	QUnit.test('husz', function(assert) {
+      assert.equal(romailatinra(20), 'XX');
+    });
+	QUnit.test('huszegy', function(assert) {
+      assert.equal(romailatinra(21), 'XXI');
+    });
+	QUnit.test('huszonegy', function(assert) {
+      assert.equal(romailatinra(24), 'XXIV');
+    });
+	QUnit.test('huszonot', function(assert) {
+      assert.equal(romailatinra(25), 'XXV');
+    });
+	QUnit.test('huszonhat', function(assert) {
+      assert.equal(romailatinra(26), 'XXVI');
+    });
+	QUnit.test('huszonkilenc', function(assert) {
+      assert.equal(romailatinra(29), 'XXIX');
     });
   });
 </script>
