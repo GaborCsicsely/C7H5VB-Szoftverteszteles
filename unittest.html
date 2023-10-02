@@ -28,6 +28,9 @@
 	else if(a==9){
 		romaiSzam="IX";
 	}
+	else if(a==10){
+		romaiSzam="X";
+	}
 	return romaiSzam;
   }
 
@@ -58,6 +61,9 @@
     });
 	QUnit.test('kilenc', function(assert) {
       assert.equal(romaiarabra(9), 'IX');
+    });
+	QUnit.test('tiz', function(assert) {
+      assert.equal(romaiarabra(10), 'X');
     });
 	
   });
