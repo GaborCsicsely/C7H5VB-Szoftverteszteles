@@ -19,6 +19,9 @@
 	else if(a==4){
 		romaiSzam="IV";
 	}
+	else if(a==5){
+		romaiSzam="V";
+	}
 	return romaiSzam;
   }
 
@@ -34,6 +37,9 @@
     });
 	QUnit.test('negy', function(assert) {
       assert.equal(romaiarabra(4), 'IV');
+    });
+	QUnit.test('ot', function(assert) {
+      assert.equal(romaiarabra(5), 'V');
     });
 	
   });
