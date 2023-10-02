@@ -28,6 +28,9 @@
 	else if(a==7){
 		romaiSzam="VII";
 	}
+	else if(a==8){
+		romaiSzam="VIII";
+	}
 	return romaiSzam;
   }
 
@@ -52,6 +55,9 @@
     });
 	QUnit.test('het', function(assert) {
       assert.equal(romaiarabra(7), 'VII');
+    });
+	QUnit.test('nyolc', function(assert) {
+      assert.equal(romaiarabra(8), 'VIII');
     });
 	
   });
