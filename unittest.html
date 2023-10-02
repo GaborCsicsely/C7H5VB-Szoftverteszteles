@@ -28,11 +28,16 @@
 	else if(a==9){
 		romaiSzam="IX";
 	}
-	else if(a>9){
+	else if(a>9 && a<19){
 		romaiSzam="X";
-		for(i=0; i<a-10; i++){
-			romaiSzam+="I";
+		if(a>10 && a<14){
+			for(i=0; i<a-10; i++){
+				romaiSzam+="I";
+			}
 		}
+		else if(a==14){
+		romaiSzam+="IV";
+	}
 	}
 	
 	return romaiSzam;
@@ -77,6 +82,9 @@
     });
 	QUnit.test('tizenharom', function(assert) {
       assert.equal(romaiarabra(13), 'XIII');
+    });
+	QUnit.test('tizennegy', function(assert) {
+      assert.equal(romaiarabra(14), 'XIV');
     });
   });
 </script>
