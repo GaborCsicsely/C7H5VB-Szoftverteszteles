@@ -11,8 +11,13 @@
 <script>
   function romaiarabra(a) {
     romaiSzam = "";
-	for(i=0; i<a; i++){
-		romaiSzam+="I";
+	if(a<=3){
+		for(i=0; i<a; i++){
+			romaiSzam+="I";
+		}
+	}
+	else if(a==4){
+		romaiSzam="IV";
 	}
 	return romaiSzam;
   }
@@ -26,6 +31,9 @@
     });
 	QUnit.test('harom', function(assert) {
       assert.equal(romaiarabra(3), 'III');
+    });
+	QUnit.test('negy', function(assert) {
+      assert.equal(romaiarabra(4), 'IV');
     });
 	
   });
