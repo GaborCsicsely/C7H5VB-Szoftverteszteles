@@ -30,19 +30,11 @@
 	}
 	else if(a>9){
 		romaiSzam="X";
-		for(i=0;i<a-10;i++){
+		for(i=0; i<a-10; i++){
 			romaiSzam+="I";
 		}
 	}
 	
-	
-	/*
-	else if(a==10){
-		romaiSzam="X";
-	}
-	else if(a==11){
-		romaiSzam="XI";
-	}*/
 	return romaiSzam;
   }
 
@@ -81,10 +73,10 @@
       assert.equal(romaiarabra(11), 'XI');
     });
 	QUnit.test('tizenketto', function(assert) {
-      assert.equal(romaiarabra(11), 'XI');
+      assert.equal(romaiarabra(12), 'XII');
     });
 	QUnit.test('tizenharom', function(assert) {
-      assert.equal(romaiarabra(11), 'XI');
+      assert.equal(romaiarabra(13), 'XIII');
     });
   });
 </script>
