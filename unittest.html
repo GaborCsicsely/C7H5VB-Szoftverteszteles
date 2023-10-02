@@ -25,6 +25,9 @@
 	else if(a==6){
 		romaiSzam="VI";
 	}
+	else if(a==7){
+		romaiSzam="VII";
+	}
 	return romaiSzam;
   }
 
@@ -46,6 +49,9 @@
     });
 	QUnit.test('hat', function(assert) {
       assert.equal(romaiarabra(6), 'VI');
+    });
+	QUnit.test('het', function(assert) {
+      assert.equal(romaiarabra(7), 'VII');
     });
 	
   });
