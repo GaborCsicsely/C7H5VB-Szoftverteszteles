@@ -16,6 +16,9 @@
 	else if (a == 2){
 		return 'II';
 	}
+	else if (a == 3){
+		return 'III';
+	}
   }
 
   QUnit.module('romaiarabra', function() {
@@ -25,5 +28,9 @@
     QUnit.test('ketto', function(assert) {
       assert.equal(romaiarabra(2), 'II');
     });
+	QUnit.test('harom', function(assert) {
+      assert.equal(romaiarabra(3), 'III');
+    });
+	
   });
 </script>
