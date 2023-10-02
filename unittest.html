@@ -28,7 +28,7 @@
 	else if(a==9){
 		romaiSzam="IX";
 	}
-	else if(a>9 && a<19){
+	else if(a>9 && a<20){
 		romaiSzam="X";
 		if(a>10 && a<14){
 			for(i=0; i<a-10; i++){
@@ -36,13 +36,16 @@
 			}
 		}
 		else if(a==14){
-		romaiSzam+="IV";
+			romaiSzam+="IV";
 		}
 		else if(a>14 && a<19){
 			romaiSzam+="V";
 			for(i=0; i<a-15; i++){
 				romaiSzam+="I";
 			}
+		}
+		else if(a==19){
+			romaiSzam+="IX";
 		}
 	}
 	
@@ -103,6 +106,9 @@
     });
 	QUnit.test('tizennyolc', function(assert) {
       assert.equal(romailatinra(18), 'XVIII');
+    });
+	QUnit.test('tizenkilenc', function(assert) {
+      assert.equal(romailatinra(19), 'XIX');
     });
   });
 </script>
