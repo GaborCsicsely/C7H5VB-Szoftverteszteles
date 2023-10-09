@@ -46,7 +46,9 @@
 	QUnit.test('előre8szor', function(assert) {
       assert.equal(holdJaro("ffffffff"), 'x: 1 y: 1 D: E');
     });
-
+	QUnit.test('előre10szer', function(assert) {
+      assert.equal(holdJaro("ffffffffff"), 'x: 3 y: 1 D: E');
+    });
 
   });
 </script>
