@@ -18,12 +18,7 @@
 		];
 		positionX = x[0];
 
-		if(a == 'f'){
-			positionX += 1;
-		}
-		if(a == 'ff'){
-			positionX += 2;
-		}
+		positionX += a.length;
 
 		return ('x: ' + positionX + ' y: 1 D: E' );
     };
@@ -35,6 +30,9 @@
     });
 	QUnit.test('előre2szer', function(assert) {
       assert.equal(holdJaro("ff"), 'x: 3 y: 1 D: E');
+    });
+	QUnit.test('előre3szor', function(assert) {
+      assert.equal(holdJaro("fff"), 'x: 4 y: 1 D: E');
     });
 
 
