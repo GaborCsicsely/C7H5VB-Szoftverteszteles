@@ -18,7 +18,13 @@
 		];
 		positionX = x[0];
 
-		positionX += a.length;
+		if(a.length < 8){
+			positionX += a.length;
+		}
+		if(a.length >= 8){
+			positionX += a.length-8;
+		}
+
 
 		return ('x: ' + positionX + ' y: 1 D: E' );
     };
@@ -36,6 +42,9 @@
     });
 	QUnit.test('előre7szer', function(assert) {
       assert.equal(holdJaro("fffffff"), 'x: 8 y: 1 D: E');
+    });
+	QUnit.test('előre8szor', function(assert) {
+      assert.equal(holdJaro("ffffffff"), 'x: 1 y: 1 D: E');
     });
 
 
