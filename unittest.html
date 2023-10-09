@@ -13,9 +13,13 @@
 	if(a<100){
 		romaiSzam += convertRomai(a);
 	}
-	if(a>100){
+	if(a>=100 && a<200){
 		romaiSzam += "C";
 		romaiSzam += convertRomai(a-100);
+	}
+	if(a>=200 && a<300){
+		romaiSzam += "CC";
+		romaiSzam += convertRomai(a-200);
 	}
 	
 
@@ -183,6 +187,9 @@
     });
 	QUnit.test('szazötvenketto', function(assert) {
       assert.equal(romailatinra(152), 'CLII');
+    });
+	QUnit.test('kétszazötvenketto', function(assert) {
+      assert.equal(romailatinra(252), 'CCLII');
     });
   });
 </script>
