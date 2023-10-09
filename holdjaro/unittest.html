@@ -18,8 +18,12 @@
 		];
 		positionX = x[0];
 		calc = Math.floor(a.length / 8);
-
-		positionX += a.length-(8*calc);
+		if(a.charAt(0) == 'f'){
+			positionX += a.length-(8*calc);
+		}
+		else if(a.charAt(0) == 'b'){
+			positionX -= a.length-8;
+		}
 
 		return ('x: ' + positionX + ' y: 1 D: E' );
     };
@@ -46,6 +50,9 @@
     });
 	QUnit.test('előre19szer', function(assert) {
       assert.equal(holdJaro("fffffffffffffffffff"), 'x: 4 y: 1 D: E');
+    });
+	QUnit.test('hátra', function(assert) {
+      assert.equal(holdJaro("b"), 'x: 8 y: 1 D: E');
     });
 
   });
