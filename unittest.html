@@ -23,11 +23,31 @@
 		romaiSzam += convert(a);
 	}
 	if(a>=30 && a<40){
-		romaiSzam+= "XX";
+		romaiSzam+= "XXX";
 		romaiSzam += convert(a);
 	}
 	if(a>=40 && a<50){
-		romaiSzam+= "XX";
+		romaiSzam+= "XL";
+		romaiSzam += convert(a);
+	}
+	if(a>=50 && a<60){
+		romaiSzam+= "L";
+		romaiSzam += convert(a);
+	}
+	if(a>=60 && a<70){
+		romaiSzam+= "LX";
+		romaiSzam += convert(a);
+	}
+	if(a>=70 && a<80){
+		romaiSzam+= "LXX";
+		romaiSzam += convert(a);
+	}
+	if(a>=80 && a<90){
+		romaiSzam+= "LXXX";
+		romaiSzam += convert(a);
+	}
+	if(a>=90 && a<100){
+		romaiSzam+= "LXXX";
 		romaiSzam += convert(a);
 	}
 	
@@ -133,6 +153,18 @@
     });
 	QUnit.test('huszonkilenc', function(assert) {
       assert.equal(romailatinra(29), 'XXIX');
+    });
+	QUnit.test('harmincharom', function(assert) {
+      assert.equal(romailatinra(33), 'XXXIII');
+    });
+	QUnit.test('negyvenharom', function(assert) {
+      assert.equal(romailatinra(43), 'XLIII');
+    });
+	QUnit.test('otvennegy', function(assert) {
+      assert.equal(romailatinra(54), 'LIV');
+    });
+	QUnit.test('hatvankilenc', function(assert) {
+      assert.equal(romailatinra(69), 'LXIX');
     });
   });
 </script>
