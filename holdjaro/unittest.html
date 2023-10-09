@@ -9,14 +9,28 @@
 </body>
 <script>
     function holdJaro (a){
-		return "x: 2, y: 1";
+		startDirection = 'E';
+		y = [
+			1, 2, 3, 4, 5, 6, 7, 8,
+		];
+		x = [
+			1, 2, 3, 4, 5, 6, 7, 8,
+		];
+		positionX = x[0];
+
+		if(a == 'f'){
+			positionX += 1;
+		}
+
+		return ('x: ' + positionX + ' y: 1 D: E' );
     };
 
 
   QUnit.module('holdJaro', function() {
-    QUnit.test('egy', function(assert) {
-      assert.equal(holdJaro("f"), 'x: 2, y: 1');
+    QUnit.test('előre', function(assert) {
+      assert.equal(holdJaro("f"), 'x: 2 y: 1 D: E');
     });
+
 
   });
 </script>
