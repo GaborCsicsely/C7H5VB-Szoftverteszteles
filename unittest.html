@@ -8,119 +8,20 @@
   <script src="https://code.jquery.com/qunit/qunit-2.20.0.js"></script>
 </body>
 <script>
-  function romailatinra(a) {
-    romaiSzam = "";
-	if(a<100){
-		romaiSzam += convertRomai(a);
-	}
-	if(a>=100 && a<200){
-		romaiSzam += "C";
-		romaiSzam += convertRomai(a-100);
-	}
-	if(a>=200 && a<300){
-		romaiSzam += "CC";
-		romaiSzam += convertRomai(a-200);
-	}
-	if(a>=300 && a<400){
-		romaiSzam += "CCC";
-		romaiSzam += convertRomai(a-300);
-	}
-	if(a>=400 && a<500){
-		romaiSzam += "CD";
-		romaiSzam += convertRomai(a-400);
-	}
-	if(a>=500 && a<600){
-		romaiSzam += "D";
-		romaiSzam += convertRomai(a-500);
-	}
-	if(a>=600 && a<700){
-		romaiSzam += "DC";
-		romaiSzam += convertRomai(a-600);
-	}
-	if(a>=700 && a<800){
-		romaiSzam += "DCC";
-		romaiSzam += convertRomai(a-700);
-	}
-	if(a>=800 && a<900){
-		romaiSzam += "DCCC";
-		romaiSzam += convertRomai(a-800);
-	}
-	if(a>=900 && a<1000){
-		romaiSzam += "CM";
-		romaiSzam += convertRomai(a-900);
-	}
-
-	return romaiSzam;
-  }
-
-  function convertRomai(a) {
-    romaiSzam = "";
-	if(a<10){
-		romaiSzam += convert(a);
-	}
-	if(a>=10 && a<20){
-		romaiSzam+= "X";
-		romaiSzam += convert(a);
-	}
-	if(a>=20 && a<30){
-		romaiSzam+= "XX";
-		romaiSzam += convert(a);
-	}
-	if(a>=30 && a<40){
-		romaiSzam+= "XXX";
-		romaiSzam += convert(a);
-	}
-	if(a>=40 && a<50){
-		romaiSzam+= "XL";
-		romaiSzam += convert(a);
-	}
-	if(a>=50 && a<60){
-		romaiSzam+= "L";
-		romaiSzam += convert(a);
-	}
-	if(a>=60 && a<70){
-		romaiSzam+= "LX";
-		romaiSzam += convert(a);
-	}
-	if(a>=70 && a<80){
-		romaiSzam+= "LXX";
-		romaiSzam += convert(a);
-	}
-	if(a>=80 && a<90){
-		romaiSzam+= "LXXX";
-		romaiSzam += convert(a);
-	}
-	if(a>=90 && a<100){
-		romaiSzam+= "LXXX";
-		romaiSzam += convert(a);
-	}
-
-	return romaiSzam;
-  }
-  
-  function convert (n){
-	const lastDigit2Str = String(n).slice(-1);
-	const ld = Number(lastDigit2Str);
-	romaiSzam = "";
-	if(ld<=3){
-		for(i=0; i<ld; i++){
-			romaiSzam+="I";
+    function romailatinra (a){
+    var romaiSzam = '';
+  	var romai = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
+ 	var latin = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+	 for (var i = 0; i < romai.length; i++) {
+		while (a >= latin[i]) {
+			romaiSzam += romai[i];
+			a -= latin[i];
 		}
-	}
-	else if(ld==4){
-		romaiSzam+="IV";
-	}
-	else if(ld>4 && ld<9){
-		romaiSzam+="V";
-		for(i=0; i<ld-5; i++){
-			romaiSzam+="I";
-		}
-	}
-	else if(ld==9){
-		romaiSzam+="IX";
-	}
-	return romaiSzam;
-  }
+  	}
+  	return romaiSzam;
+    };
+
+
   QUnit.module('romaiarabra', function() {
     QUnit.test('egy', function(assert) {
       assert.equal(romailatinra(1), 'I');
@@ -223,6 +124,12 @@
     });
 	QUnit.test('kilencszazötvenketto', function(assert) {
       assert.equal(romailatinra(952), 'CMLII');
+    });
+	QUnit.test('ezerkilencszazötvenketto', function(assert) {
+      assert.equal(romailatinra(1952), 'MCMLII');
+    });
+	QUnit.test('haromezerkilencszazkilencvenkilenc', function(assert) {
+      assert.equal(romailatinra(3999), 'MMMCMXCIX');
     });
   });
 </script>
