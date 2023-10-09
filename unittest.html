@@ -21,7 +21,34 @@
 		romaiSzam += "CC";
 		romaiSzam += convertRomai(a-200);
 	}
-	
+	if(a>=300 && a<400){
+		romaiSzam += "CCC";
+		romaiSzam += convertRomai(a-300);
+	}
+	if(a>=400 && a<500){
+		romaiSzam += "CD";
+		romaiSzam += convertRomai(a-400);
+	}
+	if(a>=500 && a<600){
+		romaiSzam += "D";
+		romaiSzam += convertRomai(a-500);
+	}
+	if(a>=600 && a<700){
+		romaiSzam += "DC";
+		romaiSzam += convertRomai(a-600);
+	}
+	if(a>=700 && a<800){
+		romaiSzam += "DCC";
+		romaiSzam += convertRomai(a-700);
+	}
+	if(a>=800 && a<900){
+		romaiSzam += "DCCC";
+		romaiSzam += convertRomai(a-800);
+	}
+	if(a>=900 && a<1000){
+		romaiSzam += "CM";
+		romaiSzam += convertRomai(a-900);
+	}
 
 	return romaiSzam;
   }
@@ -190,6 +217,12 @@
     });
 	QUnit.test('kétszazötvenketto', function(assert) {
       assert.equal(romailatinra(252), 'CCLII');
+    });
+	QUnit.test('négyszazötvenketto', function(assert) {
+      assert.equal(romailatinra(452), 'CDLII');
+    });
+	QUnit.test('kilencszazötvenketto', function(assert) {
+      assert.equal(romailatinra(952), 'CMLII');
     });
   });
 </script>
