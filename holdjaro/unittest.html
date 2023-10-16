@@ -9,7 +9,7 @@
 </body>
 <script>
     function holdJaro (a){
-		startDirection = 'E';
+		direction = 'E';
 		y = [
 			1, 2, 3, 4, 5, 6, 7, 8,
 		];
@@ -21,11 +21,14 @@
 		if(a.charAt(0) == 'f'){
 			positionX += a.length-(8*calc);
 		}
-		else if(a.charAt(0) == 'b'){
-			positionX -= a.length-8;
+    if(a.charAt(0) == 'b' && a.length % 8 == 0){
+      
+    }else if(a.charAt(0) == 'b'){
+			positionX -= a.length-(8*calc);
+      positionX += 8;
 		}
 
-		return ('x: ' + positionX + ' y: 1 D: E' );
+		return ('x: ' + positionX + ' y: ' + y[0] + ' D: ' + direction );
     };
 
 
@@ -57,9 +60,18 @@
 	QUnit.test('hátra2', function(assert) {
       assert.equal(holdJaro("bb"), 'x: 7 y: 1 D: E');
     });
+  QUnit.test('hátra3', function(assert) {
+      assert.equal(holdJaro("bbb"), 'x: 6 y: 1 D: E');
+    });
 	QUnit.test('hátra8', function(assert) {
       assert.equal(holdJaro("bbbbbbbb"), 'x: 1 y: 1 D: E');
     });
+  QUnit.test('hátra16', function(assert) {
+      assert.equal(holdJaro("bbbbbbbbbbbbbbbb"), 'x: 1 y: 1 D: E');
+  });
+  QUnit.test('hátra19', function(assert) {
+      assert.equal(holdJaro("bbbbbbbbbbbbbbbbbbb"), 'x: 6 y: 1 D: E');
+  });
 
   });
 </script>
