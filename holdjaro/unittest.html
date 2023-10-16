@@ -20,7 +20,7 @@
       'N', 'E', 'S', 'W'
     ];
 		positionX = x[0];
-    direction = d[1];
+    direction = d[0];
     positionY = y[0];
     if(a.charAt(0) == 'f'){
       const fCount = (a.match(/f/g) || []).length;
@@ -33,7 +33,9 @@
       positionX = x[index];
 		}
     if(a.charAt(0) == 'l'){
-      direction = d[0];
+      const lCount = (a.match(/l/g) || []).length;
+      const index = (d.length - lCount % d.length) % d.length;
+      direction = d[index];
     }
 
 		return ('x: ' + positionX + ' y: ' + y[0] + ' D: ' + direction );
@@ -42,46 +44,49 @@
 
   QUnit.module('holdJaro', function() {
     QUnit.test('előre', function(assert) {
-      assert.equal(holdJaro("f"), 'x: 2 y: 1 D: E');
+      assert.equal(holdJaro("f"), 'x: 2 y: 1 D: N');
     });
 	QUnit.test('előre2szer', function(assert) {
-      assert.equal(holdJaro("ff"), 'x: 3 y: 1 D: E');
+      assert.equal(holdJaro("ff"), 'x: 3 y: 1 D: N');
     });
 	QUnit.test('előre3szor', function(assert) {
-      assert.equal(holdJaro("fff"), 'x: 4 y: 1 D: E');
+      assert.equal(holdJaro("fff"), 'x: 4 y: 1 D: N');
     });
 	QUnit.test('előre7szer', function(assert) {
-      assert.equal(holdJaro("fffffff"), 'x: 8 y: 1 D: E');
+      assert.equal(holdJaro("fffffff"), 'x: 8 y: 1 D: N');
     });
 	QUnit.test('előre8szor', function(assert) {
-      assert.equal(holdJaro("ffffffff"), 'x: 1 y: 1 D: E');
+      assert.equal(holdJaro("ffffffff"), 'x: 1 y: 1 D: N');
     });
 	QUnit.test('előre10szer', function(assert) {
-      assert.equal(holdJaro("ffffffffff"), 'x: 3 y: 1 D: E');
+      assert.equal(holdJaro("ffffffffff"), 'x: 3 y: 1 D: N');
     });
 	QUnit.test('előre19szer', function(assert) {
-      assert.equal(holdJaro("fffffffffffffffffff"), 'x: 4 y: 1 D: E');
+      assert.equal(holdJaro("fffffffffffffffffff"), 'x: 4 y: 1 D: N');
     });
 	QUnit.test('hátra', function(assert) {
-      assert.equal(holdJaro("b"), 'x: 8 y: 1 D: E');
+      assert.equal(holdJaro("b"), 'x: 8 y: 1 D: N');
     });
 	QUnit.test('hátra2', function(assert) {
-      assert.equal(holdJaro("bb"), 'x: 7 y: 1 D: E');
+      assert.equal(holdJaro("bb"), 'x: 7 y: 1 D: N');
     });
   QUnit.test('hátra3', function(assert) {
-      assert.equal(holdJaro("bbb"), 'x: 6 y: 1 D: E');
+      assert.equal(holdJaro("bbb"), 'x: 6 y: 1 D: N');
     });
 	QUnit.test('hátra8', function(assert) {
-      assert.equal(holdJaro("bbbbbbbb"), 'x: 1 y: 1 D: E');
+      assert.equal(holdJaro("bbbbbbbb"), 'x: 1 y: 1 D: N');
     });
   QUnit.test('hátra16', function(assert) {
-      assert.equal(holdJaro("bbbbbbbbbbbbbbbb"), 'x: 1 y: 1 D: E');
+      assert.equal(holdJaro("bbbbbbbbbbbbbbbb"), 'x: 1 y: 1 D: N');
   });
   QUnit.test('hátra19', function(assert) {
-      assert.equal(holdJaro("bbbbbbbbbbbbbbbbbbb"), 'x: 6 y: 1 D: E');
+      assert.equal(holdJaro("bbbbbbbbbbbbbbbbbbb"), 'x: 6 y: 1 D: N');
   });
   QUnit.test('balra 1', function(assert) {
-      assert.equal(holdJaro("l"), 'x: 1 y: 1 D: N');
+      assert.equal(holdJaro("l"), 'x: 1 y: 1 D: W');
+  });
+  QUnit.test('balra 2', function(assert) {
+      assert.equal(holdJaro("ll"), 'x: 1 y: 1 D: S');
   });
 
   });
