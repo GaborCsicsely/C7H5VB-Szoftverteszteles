@@ -9,23 +9,28 @@
 </body>
 <script>
     function holdJaro (a){
-		direction = 'E';
+		
 		y = [
-			1, 2, 3, 4, 5, 6, 7, 8,
+			1, 2, 3, 4, 5, 6, 7, 8
 		];
 		x = [
-			1, 2, 3, 4, 5, 6, 7, 8,
+			1, 2, 3, 4, 5, 6, 7, 8
 		];
+    d = [
+      'N', 'S', 'E', 'W'
+    ];
 		positionX = x[0];
-		calc = Math.floor(a.length / 8);
-		if(a.charAt(0) == 'f'){
-			positionX += a.length-(8*calc);
+    direction = d[2];
+    positionY = y[0];
+    if(a.charAt(0) == 'f'){
+      const fCount = (a.match(/f/g) || []).length;
+      const index = (fCount % x.length);
+      positionX = x[index]
 		}
-    if(a.charAt(0) == 'b' && a.length % 8 == 0){
-      
-    }else if(a.charAt(0) == 'b'){
-			positionX -= a.length-(8*calc);
-      positionX += 8;
+    if(a.charAt(0) == 'b'){
+      const bCount = (a.match(/b/g) || []).length;
+      const index = (x.length - bCount % x.length) % x.length;
+      positionX = x[index];
 		}
 
 		return ('x: ' + positionX + ' y: ' + y[0] + ' D: ' + direction );
